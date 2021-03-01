@@ -82,6 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MIE_REGION: 'us-west-2'
+      CONTENT_LOCALIZATION_STACK_NAME: ${{ github.event.inputs.releaseName }}
     steps:
       - name: Check out release branch
         uses: actions/checkout@v2.3.4
@@ -95,7 +96,7 @@ jobs:
             aws-region: us-west-2
       - name: Generate short sha
         run: |
-          echo "CONTENT_LOCALIZATION_STACK_NAME=p${{ github.event.inputs.releaseName }}
+          
           echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
@@ -135,7 +136,7 @@ jobs:
       # python dependencies, other copyrighted code ...
       - name: Get stack name
         run: |
-          echo "CONTENT_LOCALIZATION_STACK_NAME=pr`git rev-parse --short HEAD`" >> $GITHUB_ENV
+          echo "CONTENT_LOCALIZATION_STACK_NAME=${{ github.event.inputs.releaseName }}"
 
       - name: Scan for new third party packages
         run: |
@@ -170,10 +171,6 @@ jobs:
             aws-access-key-id: ${{ secrets.TEST_AWS_ACCESS_KEY_ID }}
             aws-secret-access-key: ${{ secrets.TEST_AWS_SECRET_ACCESS_KEY }}
             aws-region: us-west-2
-
-      - name: Generate short sha
-        run: |
-          echo "CONTENT_LOCALIZATION_STACK_NAME=pr`git rev-parse --short HEAD`" >> $GITHUB_ENV
 
       - name: Run cfn_nag
         uses: stelligent/cfn_nag@master
@@ -274,6 +271,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MIE_REGION: 'us-east-1'
+      CONTENT_LOCALIZATION_STACK_NAME: ${{ github.event.inputs.releaseName }}
     steps:
       - name: Check out release branch
         uses: actions/checkout@v2.3.4
@@ -287,7 +285,7 @@ jobs:
             aws-region: us-east-1
       - name: Generate short sha
         run: |
-          echo "CONTENT_LOCALIZATION_STACK_NAME=p${{ github.event.inputs.releaseName }}
+         
           echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
