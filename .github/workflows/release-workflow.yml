@@ -390,7 +390,7 @@ jobs:
           CONTENT_LOCALIZATION_STACK_NAME=${{ github.event.inputs.releaseName }}
           REGION=us-west-2
           VERSION=v${{ github.event.inputs.version }}
-          DIST_OUTPUT_BUCKET=rodeolabz
+          DIST_OUTPUT_BUCKET=elementalrodeo99
           TEMPLATE_OUTPUT_BUCKET=$DIST_OUTPUT_BUCKET-$REGION
           ./build.sh $DIST_OUTPUT_BUCKET-$REGION $VERSION $REGION
   
@@ -416,7 +416,7 @@ jobs:
           CONTENT_LOCALIZATION_STACK_NAME=${{ github.event.inputs.releaseName }}
           REGION=us-east-1
           VERSION=v${{ github.event.inputs.version }}
-          DIST_OUTPUT_BUCKET=rodeolabz
+          DIST_OUTPUT_BUCKET=elementalrodeo99
           TEMPLATE_OUTPUT_BUCKET=$DIST_OUTPUT_BUCKET-$REGION
           ./build.sh $DIST_OUTPUT_BUCKET-$REGION $VERSION $REGION
 
@@ -442,7 +442,7 @@ jobs:
           CONTENT_LOCALIZATION_STACK_NAME=${{ github.event.inputs.releaseName }}
           REGION=eu-west-1
           VERSION=v${{ github.event.inputs.version }}
-          DIST_OUTPUT_BUCKET=rodeolabz
+          DIST_OUTPUT_BUCKET=elementalrodeo99
           TEMPLATE_OUTPUT_BUCKET=$DIST_OUTPUT_BUCKET-$REGION
           ./build.sh $DIST_OUTPUT_BUCKET-$REGION $VERSION $REGION
 
