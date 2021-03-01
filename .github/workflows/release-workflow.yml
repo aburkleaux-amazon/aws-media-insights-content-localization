@@ -66,13 +66,13 @@ jobs:
       - name: 'Upload One-click Deployment Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: templateUrlMieRelease
+          name: templateUrlMieReleaseOr
           path: src/templateUrlMieRelease.txt
           retention-days: 3
       - name: 'Upload Developer Deployment Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: templateUrlMieDevelopment
+          name: templateUrlMieDevelopmentOr
           path: src/templateUrlMieDevelopment.txt
           retention-days: 3
   
@@ -106,7 +106,7 @@ jobs:
           VERSION=v${{ github.event.inputs.version }}
           DIST_OUTPUT_BUCKET=micl-dev
           TEMPLATE_OUTPUT_BUCKET=$DIST_OUTPUT_BUCKET-$REGION
-          CLOUDFORMATION_TEMPLATE=`cat templateUrlMieDevelopment/templateUrlMieRelease.txt`
+          CLOUDFORMATION_TEMPLATE=`cat templateUrlMieDevelopmentOr/templateUrlMieRelease.txt`
           
           echo "deploy cloudformation: 'aws cloudformation create-stack --stack-name $CONTENT_LOCALIZATION_STACK_NAME --template-url $CLOUDFORMATION_TEMPLATE --region $REGION --parameters ParameterKey=AdminEmail,ParameterValue=$EMAIL ParameterKey=ElasticSearchNodeSize,ParameterValue=t2.small.elasticsearch --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --disable-rollback'"
           aws cloudformation create-stack --stack-name $CONTENT_LOCALIZATION_STACK_NAME --template-url $CLOUDFORMATION_TEMPLATE --region $REGION --parameters ParameterKey=AdminEmail,ParameterValue=$EMAIL ParameterKey=ElasticSearchNodeSize,ParameterValue=t2.small.elasticsearch --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --disable-rollback
@@ -258,13 +258,13 @@ jobs:
       - name: 'Upload One-click Deployment Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: templateUrlMieRelease
+          name: templateUrlMieReleaseNv
           path: src/templateUrlMieRelease.txt
           retention-days: 3
       - name: 'Upload Developer Deployment Artifact'
         uses: actions/upload-artifact@v2
         with:
-          name: templateUrlMieDevelopment
+          name: templateUrlMieDevelopmentNv
           path: src/templateUrlMieDevelopment.txt
           retention-days: 3
   
@@ -298,7 +298,7 @@ jobs:
           VERSION=v${{ github.event.inputs.version }}
           DIST_OUTPUT_BUCKET=micl-dev
           TEMPLATE_OUTPUT_BUCKET=$DIST_OUTPUT_BUCKET-$REGION
-          CLOUDFORMATION_TEMPLATE=`cat templateUrlMieDevelopment/templateUrlMieRelease.txt`
+          CLOUDFORMATION_TEMPLATE=`cat templateUrlMieDevelopmentNv/templateUrlMieRelease.txt`
           
           echo "deploy cloudformation: 'aws cloudformation create-stack --stack-name $CONTENT_LOCALIZATION_STACK_NAME --template-url $CLOUDFORMATION_TEMPLATE --region $REGION --parameters ParameterKey=AdminEmail,ParameterValue=$EMAIL ParameterKey=ElasticSearchNodeSize,ParameterValue=t2.small.elasticsearch --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --disable-rollback'"
           aws cloudformation create-stack --stack-name $CONTENT_LOCALIZATION_STACK_NAME --template-url $CLOUDFORMATION_TEMPLATE --region $REGION --parameters ParameterKey=AdminEmail,ParameterValue=$EMAIL ParameterKey=ElasticSearchNodeSize,ParameterValue=t2.small.elasticsearch --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --disable-rollback
