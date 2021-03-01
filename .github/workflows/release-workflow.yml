@@ -107,7 +107,7 @@ jobs:
           VERSION=v${{ github.event.inputs.version }}
           DIST_OUTPUT_BUCKET=micl-dev
           TEMPLATE_OUTPUT_BUCKET=$DIST_OUTPUT_BUCKET-$REGION
-          CLOUDFORMATION_TEMPLATE=`cat templateUrlMieDevelopmentOr/templateUrlMieRelease.txt`
+          CLOUDFORMATION_TEMPLATE=`cat templateUrlMieReleaseOr/templateUrlMieRelease.txt`
           
           echo "deploy cloudformation: 'aws cloudformation create-stack --stack-name $CONTENT_LOCALIZATION_STACK_NAME --template-url $CLOUDFORMATION_TEMPLATE --region $REGION --parameters ParameterKey=AdminEmail,ParameterValue=$EMAIL ParameterKey=ElasticSearchNodeSize,ParameterValue=t2.small.elasticsearch --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --disable-rollback'"
           aws cloudformation create-stack --stack-name $CONTENT_LOCALIZATION_STACK_NAME --template-url $CLOUDFORMATION_TEMPLATE --region $REGION --parameters ParameterKey=AdminEmail,ParameterValue=$EMAIL ParameterKey=ElasticSearchNodeSize,ParameterValue=t2.small.elasticsearch --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --disable-rollback
@@ -296,7 +296,7 @@ jobs:
           VERSION=v${{ github.event.inputs.version }}
           DIST_OUTPUT_BUCKET=micl-dev
           TEMPLATE_OUTPUT_BUCKET=$DIST_OUTPUT_BUCKET-$REGION
-          CLOUDFORMATION_TEMPLATE=`cat templateUrlMieDevelopmentNv/templateUrlMieRelease.txt`
+          CLOUDFORMATION_TEMPLATE=`cat templateUrlMieReleaseNv/templateUrlMieRelease.txt`
           
           echo "deploy cloudformation: 'aws cloudformation create-stack --stack-name $CONTENT_LOCALIZATION_STACK_NAME --template-url $CLOUDFORMATION_TEMPLATE --region $REGION --parameters ParameterKey=AdminEmail,ParameterValue=$EMAIL ParameterKey=ElasticSearchNodeSize,ParameterValue=t2.small.elasticsearch --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --disable-rollback'"
           aws cloudformation create-stack --stack-name $CONTENT_LOCALIZATION_STACK_NAME --template-url $CLOUDFORMATION_TEMPLATE --region $REGION --parameters ParameterKey=AdminEmail,ParameterValue=$EMAIL ParameterKey=ElasticSearchNodeSize,ParameterValue=t2.small.elasticsearch --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND --disable-rollback
@@ -418,6 +418,7 @@ jobs:
           VERSION=v${{ github.event.inputs.version }}
           DIST_OUTPUT_BUCKET=elementalrodeo99
           TEMPLATE_OUTPUT_BUCKET=$DIST_OUTPUT_BUCKET-$REGION
+          echo "./build.sh $DIST_OUTPUT_BUCKET-$REGION $VERSION $REGION"
           ./build.sh $DIST_OUTPUT_BUCKET-$REGION $VERSION $REGION
 
   host-eu-west-1:
